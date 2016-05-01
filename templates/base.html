@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <title>Startup Organizer</title>
+        <meta http-equiv="X-UA-Compatiable" content="IE=edge, chrome=1">
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <title>
+            {% block title %}
+                Startup Organizer
+            {% endblock %}
+        </title>
+            <!-- [if IE]>
+            <script src="http://html5ehiv.googlecode.come/svn/trunk/html5.js"></script><! [endif] -->
+    </head>
+
+    <body>
+        <div><!-- container -->
+            <header>
+                <h1>Startup Organizer</h1>
+            </header>
+            <main>
+                {% block content %}
+                    This is default content!
+                {% endblock %}
+            </main>
+        </div>
+
+        <footer>
+            <p>
+                &copy; 2015
+                <a href="https://AndrewsForge.com/">
+                    Andrew Pinkham
+                </a>
+            </p>
+            <p>
+                Created for
+                    <a href="https://Django-Unleashed.com/">
+                        Django Unleashed
+                    </a>
+            </p>
+        </footer>
+    </body>
+</html>
