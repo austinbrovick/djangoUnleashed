@@ -17,9 +17,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from organizer.views import homepage
+from organizer import urls as organizer_urls
+from blog import urls as blog_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'$', homepage),
+    url(r'^', include(organizer_urls)),
+    url(r'^blog/', include(blog_urls)),
 ]
+
+
+# url(regular_expression, view, optional_dictionary_of_extra_values, name=a_name)

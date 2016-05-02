@@ -1,11 +1,17 @@
-from django.shortcuts import render
-from django.http.response import HttpResponse
+from django.shortcuts import get_object_or_404, render
+from .models import Tag, Startup
 
-from .models import Tag
+def tag_list(request):
+    return render(request, 'organizer/tag_list.html', {'tag_list' : Tag.objects.all()})
 
-def homepage(request):
-    tag = Tag.objects.all()[0]
-    # tag_list = Tag.objects.all()
-    # output = "$".join([tag.name for tag in tag_list])
-    # return HttpResponse(output)
-    return render(request, 'organizer/tag_detail.html', {"tag" : tag})
+def tag_detail(request, slug):
+    tag = get_object_or_404(Tag, slug__iexact=slug)
+    return render(request, 'organizer/tag_detail.html', {'tag':tag})
+
+def startup_list(request):
+    return render(request, 'organizer/startup_list.html', {'startup_list' : Startup.objects.all()})
+
+def startup_detail(request, slug):
+    startup = get_object_or_404(Startup, slug__iexact=slug)
+    return render(request, 'organizer/startup_detail.html', {'startup':startup})
+
