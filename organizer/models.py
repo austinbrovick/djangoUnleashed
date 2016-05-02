@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+from django.core.urlresolvers import reverse
 
 from django.db import models
 
@@ -15,6 +16,9 @@ class Tag(models.Model):
 
     class Meta:
         ordering = ['name']
+
+    def get_absolute_url(self):
+        return reverse('organizer_tag_detail', kwargs={'slug':self.slug})
 
     # django will look for the Meta class in the Tag class and then search for known options, affecting the behavior of Tag instances or groups of Tag instances
 

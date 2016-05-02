@@ -1,6 +1,6 @@
 {% extends parent_template|default:"organizer/base_organizer.html" %}
 
-{% block.title %}
+{% block title %}
 {{ block.super }} - Startups
 {% endblock %}
 
@@ -9,10 +9,13 @@
 <ul>
     {% for startup in startup_list %}
         <li>
-            <a href=''>{{ startup.name }}</a>
+            <a href="{% url 'organizer_startup_detail' slug=startup.slug %}">{{ startup.name }}</a>
         </li>
     {% empty %}
         <li><em>No Startups Available</em></li>
     {% endfor %}
 </ul>
 {% endblock %}
+
+
+

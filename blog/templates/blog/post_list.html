@@ -11,11 +11,11 @@
     <article>
         <header>
             <h2>
-                <a href="">{{ post.title|title }}</a>
+                <a href="{% url 'blog_post_detail' post.pub_date.year post.pub_date.month post.slug %}">{{ post.title|title }}</a>
             </h2>
             <p>
                 Written on:
-                    <time datetime='{{ post.pub_date|date:"Y-m-d }}'>
+                    <time datetime='{{ post.pub_date|date:"Y-m-d" }}'>
                         {{ post.pub_date|date:"l, F j, Y" }}
                     </time>
             </p>
