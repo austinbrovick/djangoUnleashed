@@ -30,7 +30,7 @@ class Startup(models.Model):
                             unique=True,
                             help_text='A label for URL config')
     description = models.TextField()
-    founded_date = models.DateField('date founded')
+    founded_date = models.DateField('date founded') # model form will use 'date founded' as label, django will capitalize the first letter in each word <3
     contact = models.EmailField()
     website = models.URLField(max_length=255)
     tags = models.ManyToManyField(Tag)
