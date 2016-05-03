@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.core.urlresolvers import reverse
 
 from organizer.models import Startup, Tag  # importing tables
 
@@ -27,6 +28,7 @@ class Post(models.Model):
 
 
     def get_absolute_url(self):
+        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
         return reverse('blog_post_detail', kwargs={'year':self.pub_date.year, 'month': self.pub_date.month, 'slug': self.slug})
 
 # posts have many tags, tags can be on many posts
