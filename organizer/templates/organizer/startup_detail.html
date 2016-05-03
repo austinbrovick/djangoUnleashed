@@ -19,7 +19,7 @@
             <dt>Tag{{ startup.tags.count|pluralize }}</dt>
                 {% for tag in startup.tags.all %}
                     <dd>
-                        <a href=''>{{ tag.name|title }}</a>
+                        <a href="{{ tag.get_absolute_url }}">{{ tag.name|title }}</a>
                     </dd>
                 {% endfor %}
     </dl>
@@ -45,7 +45,7 @@
                 <ul>
                         {% for post in startup.blog_posts.all %}
                             <li>
-                                <a href="">{{ post.title|title }}</a>
+                                <a href="{{ post.get_absolute_url }}">{{ post.title|title }}</a>
                             </li>
                         {% endfor %}
                 </ul>

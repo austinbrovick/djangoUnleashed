@@ -11,7 +11,7 @@
     <article>
         <header>
             <h2>
-                <a href="{% url 'blog_post_detail' post.pub_date.year post.pub_date.month post.slug %}">{{ post.title|title }}</a>
+                <a href="{{ post.get_absolute_url }}">{{ post.title|title }}</a>
             </h2>
             <p>
                 Written on:
@@ -23,7 +23,7 @@
 
         <p>{{ post.text|truncatewords:20 }}</p>
         <p>
-            <a href="">Read more&hellip:</a>
+            <a href="{{ post.get_absolute_url }}">Read more&hellip:</a>
         </p>
 
     </article>

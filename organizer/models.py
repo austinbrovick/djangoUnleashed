@@ -42,6 +42,9 @@ class Startup(models.Model):
         ordering = ['name']
         get_latest_by = 'founded_date'
 
+    def get_absolute_url(self):
+        return reverse('organizer_startup_detail', kwargs={'slug':self.slug})
+
 
 
 class NewsLink(models.Model):

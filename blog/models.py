@@ -25,6 +25,10 @@ class Post(models.Model):
         ordering = ['-pub_date', 'title']
         get_latest_by = 'pub_date'
 
+
+    def get_absolute_url(self):
+        return reverse('blog_post_detail', kwargs={'year':self.pub_date.year, 'month': self.pub_date.month, 'slug': self.slug})
+
 # posts have many tags, tags can be on many posts
 # there can be many posts about startups and one post can be about many startups
 
