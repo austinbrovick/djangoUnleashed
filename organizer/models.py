@@ -63,5 +63,8 @@ class NewsLink(models.Model):
         ordering = ['-pub_date']
         get_latest_by = 'pub_date'
 
+    def get_absolute_url(self):
+        return self.startup.get_absolute_url()
+
 
 # default ordering is ['-order_date']
