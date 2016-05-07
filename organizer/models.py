@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 
 from django.db import models
 
@@ -19,6 +19,12 @@ class Tag(models.Model):
 
     def get_absolute_url(self):
         return reverse('organizer_tag_detail', kwargs={'slug':self.slug})
+
+    def get_update_url(self):
+        return reverse('organizer_tag_update', kwargs={'slug':self.slug})
+
+    def get_delete_url(self):
+        return reverse('organizer_tag_delete', kwargs={'slug':self.slug})
 
     # django will look for the Meta class in the Tag class and then search for known options, affecting the behavior of Tag instances or groups of Tag instances
 
@@ -45,6 +51,12 @@ class Startup(models.Model):
     def get_absolute_url(self):
         return reverse('organizer_startup_detail', kwargs={'slug':self.slug})
 
+    def get_update_url(self):
+        return reverse('organizer_startup_update', kwargs={'slug':self.slug})
+
+    def get_delete_url(self):
+        return reverse('organizer_startup_delete', kwargs={'slug':self.slug})
+
 
 
 class NewsLink(models.Model):
@@ -65,6 +77,14 @@ class NewsLink(models.Model):
 
     def get_absolute_url(self):
         return self.startup.get_absolute_url()
+
+    def get_update_url(self):
+        return reverse('organizer_newlink_update', kwargs={'pk':self.pk})
+
+    def get_delete_url(self):
+        return reverse('organizer_newslink_delete', kwargs={'pk':self.pk})
+
+
 
 
 # default ordering is ['-order_date']
