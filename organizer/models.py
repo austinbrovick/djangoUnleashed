@@ -64,6 +64,7 @@ class NewsLink(models.Model):
     pub_date = models.DateField('date published') # the verbose_name parameter can be passed as the first unnamed argument
     link = models.URLField(max_length=255)
     startup = models.ForeignKey(Startup) # one startup can have many newslinks
+    slug = models.SlugField(max_length=63)
 
 
     def __str__(self):
