@@ -39,7 +39,7 @@ class Startup(models.Model):
     founded_date = models.DateField('date founded') # model form will use 'date founded' as label, django will capitalize the first letter in each word <3
     contact = models.EmailField()
     website = models.URLField(max_length=255)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
         return self.name
@@ -75,6 +75,7 @@ class NewsLink(models.Model):
         # verbose_name_plural for specifications on plurals
         ordering = ['-pub_date']
         get_latest_by = 'pub_date'
+        unique_together = ('slug', 'startup')
 
     def get_absolute_url(self):
         return self.startup.get_absolute_url()

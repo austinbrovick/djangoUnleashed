@@ -13,8 +13,8 @@ class Post(models.Model):
     text = models.TextField()
     pub_date = models.DateField('date_published',
                                 auto_now_add=True) # field will automatically be set to the date when this instance is intially created
-    tags = models.ManyToManyField(Tag, related_name='blog_posts')
-    startups = models.ManyToManyField(Startup, related_name='blog_posts')
+    tags = models.ManyToManyField(Tag, blank=True, related_name='blog_posts')
+    startups = models.ManyToManyField(Startup, blank=True, related_name='blog_posts')
 
 
     def get_absolute_url(self):
