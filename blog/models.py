@@ -17,9 +17,18 @@ class Post(models.Model):
     startups = models.ManyToManyField(Startup, blank=True, related_name='blog_posts')
 
 
+    class Meta:
+        verbose_name = 'blog post'
+        ordering = ['-pub_date', 'title']
+        get_latest_by = 'pub_date'
+
+
+    # def get_absolute_url(self):
+    #     print("$$$$$$$$$$$$$$$$$$$$ get absolute url $$$$$$$$$$$$$$$$")
+    #     # x = reverse('blog_post_update', kwargs={'year':self.pub_date.year, 'month':self.pub_date.month, 'slug': self.slug})
+    #     return reverse('blog_post_detail', kwargs={'year':self.pub_date.year, 'month':self.pub_date.month, 'slug': self.slug})
+
     def get_absolute_url(self):
-        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-        # x = reverse('blog_post_update', kwargs={'year':self.pub_date.year, 'month':self.pub_date.month, 'slug': self.slug})
         return reverse('blog_post_detail', kwargs={'year':self.pub_date.year, 'month':self.pub_date.month, 'slug': self.slug})
 
     def get_update_url(self):
@@ -34,10 +43,6 @@ class Post(models.Model):
         return "{} on {}".format(self.title, self.pub_date.strftime('%Y-%m-%d'))
 
 
-    class Meta:
-        verbose_name = 'blog post'
-        ordering = ['-pub_date', 'title']
-        get_latest_by = 'pub_date'
 
 # posts have many tags, tags can be on many posts
 # there can be many posts about startups and one post can be about many startups

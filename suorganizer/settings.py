@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'organizer',
     'blog',
+    'contact',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -82,6 +83,18 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+SERVER_EMAIL = 'austinbrovick@yahoo.com'
+DEFAULT_FROM_EMAIL = 'brovickaustin@gmail.com'
+EMAIL_SUBJECT_PREFIX = '[Startup Organizer]'
+MANAGERS = (
+    ('Us', 'austinbrovick@yahoo.com')
+)
+
 
 
 # Password validation
